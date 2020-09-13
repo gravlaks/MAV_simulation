@@ -1,0 +1,31 @@
+function vertices = spacecraft_vertices
+%SPACECRAFT_VERTICES Define coordinates of vertices
+fuse_l1 = 2;
+fuse_l2 = 1;
+fuse_h = 1;
+wing_l = 1;
+fuse_l3 = 3;
+tail_h = 2;
+tailwing_l = 1;
+
+fuse_w = 1;
+wing_w = 3;
+tailwing_w = 2;
+
+% Vertices as defined in fig 2.14 p.26, body frame
+vertices = [
+        fuse_l1     0    0;  %point 1
+        fuse_l2    fuse_w/2    -fuse_h/2;  %point 2
+        fuse_l2    -fuse_w/2    -fuse_h/2;  %point 3
+        fuse_l2    -fuse_w/2    fuse_h/2;  %point 4
+        fuse_l2    fuse_w/2    fuse_h/2;  %point 5
+        -fuse_l3    0   0;  %point 6
+       0    wing_w/2   0;  %point 7
+       -wing_l    wing_w/2   0;  %point 8
+       -wing_l    -wing_w/2   0;  %point 9
+       0    -wing_w/2   0;  %point 10
+       -(fuse_l3-tailwing_l)  tailwing_w/2  0;  %point 11
+       -1.5   1.5  0;  %point 12
+   ];
+end
+

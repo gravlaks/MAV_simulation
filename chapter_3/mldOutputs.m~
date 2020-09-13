@@ -1,0 +1,5 @@
+function y = mldOutputs(t, x, u)
+%MLDOUTPUTS 
+    y = x(1:12);
+end
+
