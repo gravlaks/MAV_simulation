@@ -18,7 +18,7 @@ function xdot = mdlDerivatives(t, x, input, MAV)
     J_y = MAV.Jy;
     J_z = MAV.Jz;
     J_xz = MAV.Jxz;
-    mass = MAV.m
+    mass = MAV.mass;
     %forces and moments as inputs
     f_x = input(1);
     f_y = input(2);
@@ -38,10 +38,9 @@ function xdot = mdlDerivatives(t, x, input, MAV)
     gamma(8) = J_x*J_z - J_xz^2;
 
     
-    
-    xdot(1:3) = [cos(theta)*cos(psi)   sin(phi)*sin(theta)*cos(psi) - cos(theta)*sin(psi)   cos(phi)*sin(theta)*cos(psi) + sin(phi)*sin(psi);
-                cos(theta)*cos(psi)   sin(phi)*sin(theta)*cos(psi) + cos(theta)*sin(psi)   cos(phi)*sin(theta)*cos(psi) - sin(phi)*sin(psi);
-                -sin(phi)   sin(phi)*cos(theta) cos(phi)*cos(theta)]*[u;v;w];
+    xdot(1:3) = [cos(theta)*cos(psi)   sin(phi)*sin(theta)*cos(psi) - cos(phi)*sin(psi)   cos(phi)*sin(theta)*cos(psi) + sin(phi)*sin(psi);
+                cos(theta)*sin(psi)   sin(phi)*sin(theta)*cos(psi) + cos(phi)*sin(psi)   cos(phi)*sin(theta)*cos(psi) - sin(phi)*sin(psi);
+                -sin(phi)   sin(phi)*cos(theta)     cos(phi)*cos(theta)]*[u;v;w];
     
     xdot(4) = r*v-q*w + 1/mass*f_x;
     xdot(5) = p*w - r*u + 1/mass*f_y;
